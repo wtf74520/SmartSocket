@@ -17,7 +17,7 @@ public class HookController {
         // Your logic to process the data goes here
         // For demonstration purposes, just returning the data as is
         log.info(json);
-        System.out.println("kooked");
+        System.out.println("hooked");
         return ResponseEntity.ok(json);
     }
 }
