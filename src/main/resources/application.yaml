@@ -1,5 +1,5 @@
 mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml
-#  config-location: classpath:mybatis/config/mybatis_config
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  config-location: classpath:mybatis/config/mybatis_config.xml
+#  configuration:
+#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
