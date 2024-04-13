@@ -28,7 +28,7 @@ public class HelloController {
     @ResponseBody
     @GetMapping("/user")
     public User getUserById(@RequestParam("id") Long id) {
-        log.info("userId: " + id);
+        log.debug("userId: " + id);
         User user = userService.getUserById(id);
         //System.out.println(user.toString());
         return user;
