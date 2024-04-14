@@ -11,5 +11,5 @@ public class DeviceData {
     private Timestamp timestamp;
     private float current;
     private float power;
-    private String status;
+    private String on;
 }

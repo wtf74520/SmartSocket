@@ -28,16 +28,20 @@ public class HelloController {
         return "home";
     }
     @ResponseBody
-    @GetMapping("/user")
-    public User getUserById(@RequestParam("id") Long id) {
-        log.info("userId: " + id);
-        if(id==1){
-            mqttService.sendMessageToDevice("on","1");
-        } else if (id == 0) {
-            mqttService.sendMessageToDevice("on","0");
-        }
-        User user = userService.getUserById(id);
+    @GetMapping("/appUpStream")
+    public User getUserById(@RequestParam("msg") String  msg,@RequestParam("value") String  value) {
+//        log.info("userId: " + id);
+//        if(id==1){
+//            mqttService.sendMessageToDevice("on","1");
+//        } else if (id == 0) {
+//            mqttService.sendMessageToDevice("on","0");
+//        }
+//        User user = userService.getUserById(id);
+        log.info("getUserById msg : {} value{}", msg,value);
+        mqttService.sendMessageToDevice(msg,value);
+        //查表 top1
         //System.out.println(user.toString());
-        return user;
+
+        return new User();
     }
 }

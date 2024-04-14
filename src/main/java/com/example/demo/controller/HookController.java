@@ -35,17 +35,17 @@ public class HookController {
     DeviceService deviceService;
     @PostMapping("/hook")
     public ResponseEntity<String> handlePostRequest(@RequestBody String json) {
-        log.info(json);
+        //log.info(json);
         String payload = "";
         String clientId = "";
         PayloadData payloadData;
         Device device = new Device() ;
-        log.info("hooked");
+        //log.info("hooked");
         try {
             JsonNode rootNode = objectMapper.readTree(json);
             //log.info("rootNode : " + rootNode.toString()) ;
             if(rootNode.get("clientid")!=null){
-                log.info("client id :{}",rootNode.get("clientid").asInt());
+                //log.info("client id :{}",rootNode.get("clientid").asInt());
                 device.setDeviceId(rootNode.get("clientid").asInt());
                 device.setDeviceName(rootNode.get("peerhost").asText());
                 //deviceService.createDevice(device);
