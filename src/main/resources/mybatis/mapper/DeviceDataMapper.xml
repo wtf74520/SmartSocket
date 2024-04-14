@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace指定Mapper接口的全限定名 -->
+<mapper namespace="com.example.demo.mapper.DeviceDataMapper">
+    <insert id="createDeviceData" parameterType="com.example.demo.bean.DeviceData">
+        INSERT INTO device_data (device_id, timestamp, current, power, status)
+        VALUES (#{deviceId}, #{timestamp}, #{current}, #{power}, #{status})
+    </insert>
+
+    <update id="updateDeviceData" parameterType="com.example.demo.bean.DeviceData">
+        UPDATE device_data
+        SET device_id = #{deviceId}, timestamp = #{timestamp},
+        current = #{current}, power = #{power}, status = #{status}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="deleteDeviceData" parameterType="int">
+        DELETE FROM device_data
+        WHERE id = #{deviceDataId}
+    </delete>
+
+    <select id="getDeviceDataById" parameterType="int" resultType="com.example.demo.bean.DeviceData">
+        SELECT id, device_id, timestamp, current, power, status
+        FROM device_data
+        WHERE id = #{deviceDataId}
+    </select>
+</mapper>
