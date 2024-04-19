@@ -1,10 +1,12 @@
 package com.example.demo.mapper;
 
-import com.example.demo.bean.Device;
+import com.example.demo.pojo.Device;
 
 public interface DeviceMapper {
     void createDevice(Device device);
     void updateDevice(Device device);
-    void deleteDevice(int deviceId);
-    Device getDeviceById(int deviceId);
+    void deleteDevice(Device device);
+    Device getDeviceById(String clientId);
+    int countsHasSameId(String clientId);
+    int selectIdByClientId(String clientId);
 }

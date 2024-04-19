@@ -1,6 +1,6 @@
 package com.example.demo.mapper;
 
-import com.example.demo.bean.DeviceData;
+import com.example.demo.pojo.DeviceData;
 
 public interface DeviceDataMapper {
     void createDeviceData(DeviceData deviceData);

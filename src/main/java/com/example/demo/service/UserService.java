@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.bean.User;
+import com.example.demo.pojo.User;
 import com.example.demo.mapper.UserMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class MqttService {
 
     private static final String BROKER = "tcp://localhost:1883"; // MQTT broker的地址
-    private static final String TOPIC = "oldfox126/esp12s/bl0942/c8c9a33ed480/in"; // MQTT主题
+    private static final String TOPIC = "lzs/esp12s/bl0942/c8c9a33ed480/in"; // MQTT主题
 
     private MqttClient mqttClient;
 

@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.bean.DeviceData;
+import com.example.demo.pojo.DeviceData;
 import com.example.demo.mapper.DeviceDataMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

@@ -2,16 +2,15 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<!-- namespace指定Mapper接口的全限定名 -->
 <mapper namespace="com.example.demo.mapper.DeviceMapper">
-    <insert id="createDevice" parameterType="com.example.demo.bean.Device">
-        INSERT INTO device (device_id, device_name)
+    <insert id="createDevice" parameterType="com.example.demo.pojo.Device">
+        INSERT INTO device (client_id, device_name)
         VALUES (#{deviceId}, #{deviceName})
     </insert>
 
-    <update id="updateDevice" parameterType="com.example.demo.bean.Device">
+    <update id="updateDevice" parameterType="com.example.demo.pojo.Device">
         UPDATE device
-        SET device_id = #{deviceId}, device_name = #{deviceName}
+        SET client_id = #{deviceId}, device_name = #{deviceName}
         WHERE id = #{id}
     </update>
 
@@ -20,9 +19,17 @@
         WHERE id = #{deviceId}
     </delete>
 
-    <select id="getDeviceById" parameterType="int" resultType="com.example.demo.bean.Device">
-        SELECT id, device_id, device_name
+    <select id="getDeviceById" parameterType="int" resultType="com.example.demo.pojo.Device">
+        SELECT id, client_id, device_name
         FROM device
         WHERE id = #{deviceId}
+    </select>
+    <select id="countsHasSameId" parameterType="string" resultType="int">
+        SELECT COUNT(*) AS count
+        FROM device
+        WHERE client_id = #{deviceId};
+    </select>
+    <select id="selectIdByClientId" parameterType="string" resultType="int">
+        SELECT id FROM device WHERE client_id = #{clientId}
     </select>
 </mapper>

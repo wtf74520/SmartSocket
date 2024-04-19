@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.PayloadDataMapper">
+
+    <insert id="insertPayloadData" parameterType="com.example.demo.pojo.PayloadData">
+        INSERT INTO payload_data (device_id, state, led, version, debug, info, on_status, countdown, starttime, endtime, timer, reverse, voltage, current, power, energy, freq, pows, time)
+        VALUES (#{deviceId}, #{state}, #{led}, #{version}, #{debug}, #{info}, #{on}, #{countdown}, #{starttime}, #{endtime}, #{timer}, #{reverse}, #{voltage}, #{current}, #{power}, #{energy}, #{freq}, #{pows}, #{time})
+    </insert>
+
+    <select id="selectLatestPayloadData" resultType="com.example.demo.pojo.PayloadData">
+        SELECT * FROM payload_data ORDER BY id DESC LIMIT 1;
+    </select>
+
+</mapper>

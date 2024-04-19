@@ -1,4 +1,4 @@
-package com.example.demo.bean;
+package com.example.demo.pojo;
 
 import lombok.Data;
 
@@ -10,7 +10,10 @@ import lombok.Data;
  */
 @Data
 public class PayloadData {
-
+    /**
+     * The id of the client
+     */
+    private int deviceId;
     /**
      * The state of the system.
      */
