@@ -27,4 +27,14 @@ public class DeviceUpStreamController {
 
         return payloadDataService.selectLatestPayloadData();
     }
+    @ResponseBody
+    @GetMapping("/appRequestData")
+    public PayloadData handleDataRequest() {
+
+        log.info("[appRequestData]handleDataRequest ");
+
+        //查表 top1
+
+        return payloadDataService.selectLatestPayloadData();
+    }
 }

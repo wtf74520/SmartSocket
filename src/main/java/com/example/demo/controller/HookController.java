@@ -41,13 +41,22 @@ public class HookController {
         Device device = new Device() ;
         PayloadData payloadData = null;
         String payload = "";
-        //log.info(json);
+        log.info(json);
         try {
             rootNode = objectMapper.readTree(json);
 
         } catch (Exception e) {
             log.error("Error stack{}", Arrays.toString(e.getStackTrace()));
         }
+
+        if(rootNode != null && rootNode.asText().equals("\"state\": 0")){
+
+
+            log.info("Death message received");
+            return ResponseEntity.ok(json);
+            //payloadDataService.insertPayloadData(new PayloadData());
+        }
+
         if (rootNode != null && rootNode.has("event") && rootNode.has("topic")) {
             String topic = rootNode.get("topic").asText();
             int lastIndex = topic.lastIndexOf('/');
@@ -57,7 +66,8 @@ public class HookController {
             }
         }
         if (inOrStat.equals("stat")){ //need save data to database
-            if(rootNode.get("clientid") != null){
+            if(!rootNode.get("clientid").asText().isEmpty()){
+
                 log.info("client id :{}",rootNode.get("clientid").asText());
                 log.info("peerhost :{}",rootNode.get("peerhost").asText());
                 device.setClientId(rootNode.get("clientid").asText());

@@ -5,29 +5,29 @@
 <mapper namespace="com.example.demo.mapper.DeviceMapper">
     <insert id="createDevice" parameterType="com.example.demo.pojo.Device">
         INSERT INTO device (client_id, device_name)
-        VALUES (#{deviceId}, #{deviceName})
+        VALUES (#{clientId}, #{deviceName})
     </insert>
 
     <update id="updateDevice" parameterType="com.example.demo.pojo.Device">
         UPDATE device
-        SET client_id = #{deviceId}, device_name = #{deviceName}
+        SET client_id = #{clientId}, device_name = #{deviceName}
         WHERE id = #{id}
     </update>
 
     <delete id="deleteDevice" parameterType="int">
         DELETE FROM device
-        WHERE id = #{deviceId}
+        WHERE id = #{clientId}
     </delete>
 
     <select id="getDeviceById" parameterType="int" resultType="com.example.demo.pojo.Device">
         SELECT id, client_id, device_name
         FROM device
-        WHERE id = #{deviceId}
+        WHERE id = #{clientId}
     </select>
     <select id="countsHasSameId" parameterType="string" resultType="int">
         SELECT COUNT(*) AS count
         FROM device
-        WHERE client_id = #{deviceId};
+        WHERE client_id = #{clientId};
     </select>
     <select id="selectIdByClientId" parameterType="string" resultType="int">
         SELECT id FROM device WHERE client_id = #{clientId}
