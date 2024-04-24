@@ -9,6 +9,7 @@ import lombok.Data;
  * @author Tabnine
  */
 @Data
+
 public class PayloadData {
     /**
      * The id of the client

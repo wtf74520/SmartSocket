@@ -49,12 +49,15 @@ public class HookController {
             log.error("Error stack{}", Arrays.toString(e.getStackTrace()));
         }
 
-        if(rootNode != null && rootNode.asText().equals("\"state\": 0")){
+        if(rootNode != null && rootNode.get("payload")!=null && rootNode.get("payload").asText().equals("{\"state\":0}")){
 
 
             log.info("Death message received");
-            return ResponseEntity.ok(json);
-            //payloadDataService.insertPayloadData(new PayloadData());
+            PayloadData offlinePayload = new PayloadData();
+            offlinePayload = payloadDataService.selectLatestPayloadData();
+            offlinePayload.setState(0);
+            payloadDataService.insertPayloadData(offlinePayload);
+
         }
 
         if (rootNode != null && rootNode.has("event") && rootNode.has("topic")) {
